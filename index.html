@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Operatos AI — One AI tool a day</title>
+<meta name="description" content="One AI tool a day, tested for real. Free tools, honest limits, no hype. Today: EasyCut.">
+<meta name="theme-color" content="#03061a">
+<meta property="og:title" content="Operatos AI — EasyCut">
+<meta property="og:description" content="One AI tool a day, tested for real. Free tools, honest limits, no hype.">
+<meta property="og:image" content="https://operatosai.github.io/tools/og.jpg">
+<meta property="og:url" content="https://operatosai.github.io/tools/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="orb.webp" type="image/webp">
+<style>
+:root{
+  --bg:#03061a; --ink:#eef2ff; --mute:#9aa6c8; --line:rgba(150,175,255,.16);
+  --blue:#2f6bff; --blue2:#5c8dff; --orange:#ff6a3d;
+  --glass:rgba(12,20,52,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{min-height:100dvh;color:var(--ink);font:400 16px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+#nebula{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+main{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:max(28px,env(safe-area-inset-top)) 20px max(40px,env(safe-area-inset-bottom))}
+
+/* hero */
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:18px 0 26px}
+.orb{width:92px;height:92px;border-radius:50%;position:relative;margin-bottom:18px}
+.orb img{width:100%;height:100%;border-radius:50%;display:block;position:relative;z-index:1}
+.orb::before{content:"";position:absolute;inset:-26px;border-radius:50%;z-index:0;
+  background:radial-gradient(circle,rgba(47,107,255,.55),rgba(47,107,255,0) 65%);filter:blur(6px)}
+.handle{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue2);font-weight:600}
+h1{font-size:clamp(34px,9vw,46px);line-height:1.02;letter-spacing:-.035em;font-weight:750;margin:10px 0 10px}
+h1 em{font-style:normal;background:linear-gradient(100deg,#fff 10%,#9fbaff 55%,var(--orange) 105%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mute);font-size:15.5px;max-width:30ch}
+
+/* featured */
+.label{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:8px 2px 12px}
+.label::after{content:"";flex:1;height:1px;background:var(--line)}
+.live{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 0 rgba(255,106,61,.6);animation:ping 2.4s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,106,61,.55)}70%{box-shadow:0 0 0 10px rgba(255,106,61,0)}100%{box-shadow:0 0 0 0 rgba(255,106,61,0)}}
+.card{position:relative;border-radius:24px;padding:24px 22px 22px;background:var(--glass);
+  backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+  box-shadow:0 30px 80px -30px rgba(10,30,120,.9),inset 0 1px 0 rgba(255,255,255,.08)}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(140deg,rgba(120,160,255,.65),rgba(120,160,255,.08) 40%,rgba(255,106,61,.55));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:#c9d4f5}
+.chip.free{color:#9ff0c4;border-color:rgba(120,240,180,.3);background:rgba(60,200,140,.08)}
+.chip.star{color:#ffd59a;border-color:rgba(255,200,120,.3)}
+.card h2{font-size:30px;letter-spacing:-.03em;line-height:1.08;font-weight:720}
+.card .what{color:#c3cdea;margin:10px 0 20px;font-size:16px}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px 18px;border-radius:16px;
+  font-weight:650;font-size:16.5px;color:#fff;text-decoration:none;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#4a7dff,#2457f0);box-shadow:0 12px 30px -10px rgba(47,107,255,.85),inset 0 1px 0 rgba(255,255,255,.25)}
+.cta::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);animation:sheen 4.5s ease-in-out infinite}
+@keyframes sheen{0%,60%{left:-60%}100%{left:130%}}
+.cta svg{width:18px;height:18px}
+.alt{display:flex;gap:10px;margin-top:10px}
+.alt a{flex:1;text-align:center;padding:12px;border-radius:14px;font-size:14px;font-weight:600;color:#d7e0ff;text-decoration:none;
+  border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.site{display:block;text-align:center;font-size:12.5px;color:var(--mute);margin-top:12px}
+
+/* list */
+.list{margin-top:34px}
+.row{display:flex;align-items:center;gap:14px;padding:15px 14px;border-radius:16px;text-decoration:none;color:inherit;
+  border:1px solid transparent;transition:background .2s,border-color .2s}
+.row+.row{margin-top:4px}
+.row:hover,.row.hit{background:rgba(255,255,255,.04);border-color:var(--line)}
+.row.hit{border-color:rgba(255,106,61,.45)}
+.ini{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-weight:700;font-size:17px;
+  background:linear-gradient(140deg,rgba(47,107,255,.35),rgba(47,107,255,.08));border:1px solid var(--line);color:#cfe0ff}
+.txt{flex:1;min-width:0}
+.txt b{display:block;font-size:15.5px;font-weight:650}
+.txt span{display:block;color:var(--mute);font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.go{flex:none;color:var(--blue2);font-size:20px}
+.empty{color:var(--mute);font-size:14px;padding:6px 4px}
+
+footer{margin-top:40px;text-align:center;color:var(--mute);font-size:12.5px}
+.social{display:flex;gap:10px;justify-content:center;margin-bottom:18px}
+.social a{padding:11px 16px;border-radius:999px;border:1px solid var(--line);color:#dfe6ff;text-decoration:none;font-weight:600;font-size:14px;background:rgba(255,255,255,.03)}
+footer p+p{margin-top:6px}
+footer a.small{color:var(--mute)}
+
+/* entrance */
+.in{opacity:0;transform:translateY(14px);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.32s}.d4{animation-delay:.46s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.in{opacity:1;transform:none;animation:none}.live,.cta::after{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="nebula" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<main>
+  <header class="hero">
+    <div class="orb in d1"><img src="orb.webp" alt="Operatos AI" width="92" height="92"></div>
+    <div class="handle in d1">@operatos.ai</div>
+    <h1 class="in d2">One AI tool<br><em>a day.</em></h1>
+    <p class="sub in d2">Tested for real. Free tools, honest limits, no hype.</p>
+  </header>
+
+  <section class="in d3" aria-labelledby="today">
+    <div class="label"><span class="live" aria-hidden="true"></span><span id="today">Latest tool · Oct 13</span></div>
+    <article class="card" id="t-easycut"><div class="meta"><span class="chip free">Free</span><span class="chip">Free Browser Video Editor with AI Tools</span></div><h2>EasyCut</h2><p class="what">EasyCut: a free, browser‑based video editor with AI tools, no account needed.</p><a class="cta" href="https://easycut.studio/" rel="noopener">Open EasyCut<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><div class="alt"><a href="https://www.instagram.com/reel/DedU60-jXAp/">Watch the Reel</a></div><span class="site">Official site: easycut.studio</span></article>
+  </section>
+
+  <section class="list in d4" aria-labelledby="prev">
+    <div class="label"><span id="prev">Previous tools</span></div>
+    <p class="empty">New tools land here every day. Follow so you don't miss one.</p>
+  </section>
+
+  <footer>
+    <div class="social">
+      <a href="https://www.instagram.com/operatos.ai/">Instagram</a>
+      <a href="https://www.youtube.com/channel/UCzZWWbZ6SQNGDVrMQ6OfvEA">YouTube</a>
+    </div>
+    <p>Every link goes to the tool's official website. No sponsored picks.</p>
+    <p>Made by OperatOS · <a class="small" href="https://operatosai.github.io/milonair/privacy/">Privacy</a></p>
+  </footer>
+</main>
+
+<script>
+/* Nebula background — adapted from ThreeUI "Nebula" (MIT © 2026 Meng To, github.com/MengTo/threeui),
+   ported from Three.js to raw WebGL and recoloured for Operatos AI. */
+(function(){
+  var c=document.getElementById('nebula'), gl=c.getContext('webgl',{antialias:false,alpha:false});
+  if(!gl) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  var fs=[
+  'precision mediump float;uniform float u_time;uniform vec2 u_res;uniform vec2 u_m;',
+  'vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}vec2 mod289(vec2 x){return x-floor(x*(1./289.))*289.;}',
+  'vec3 permute(vec3 x){return mod289(((x*34.)+1.)*x);}',
+  'float snoise(vec2 v){const vec4 C=vec4(.211324865405187,.366025403784439,-.577350269189626,.024390243902439);',
+  'vec2 i=floor(v+dot(v,C.yy));vec2 x0=v-i+dot(i,C.xx);vec2 i1=(x0.x>x0.y)?vec2(1.,0.):vec2(0.,1.);',
+  'vec4 x12=x0.xyxy+C.xxzz;x12.xy-=i1;i=mod289(i);vec3 p=permute(permute(i.y+vec3(0.,i1.y,1.))+i.x+vec3(0.,i1.x,1.));',
+  'vec3 m=max(.5-vec3(dot(x0,x0),dot(x12.xy,x12.xy),dot(x12.zw,x12.zw)),0.);m=m*m;m=m*m;',
+  'vec3 x=2.*fract(p*C.www)-1.;vec3 h=abs(x)-.5;vec3 ox=floor(x+.5);vec3 a0=x-ox;',
+  'm*=1.79284291400159-.85373472095314*(a0*a0+h*h);vec3 g;g.x=a0.x*x0.x+h.x*x0.y;g.yz=a0.yz*x12.xz+h.yz*x12.yw;return 130.*dot(m,g);}',
+  'float fbm(vec2 p){float v=0.;float a=.55;for(int i=0;i<4;i++){v+=a*snoise(p);p*=2.05;a*=.5;}return v;}',
+  'void main(){vec2 uv=gl_FragCoord.xy/u_res;float ar=u_res.x/u_res.y;vec2 p=uv;p.x*=ar;',
+  'float t=u_time*.05;vec2 drift=(u_m-.5)*.12;vec2 st=p*.85+drift;st+=vec2(fbm(st+t),fbm(st-t))*.35;',
+  'vec3 col=vec3(.004,.008,.03);',
+  'vec2 c1=vec2(ar*.5,.92)+drift;float n1=fbm(st*1.4+t*2.);float mass=smoothstep(1.15,.05,length(p-c1)+n1*.32);',
+  'float tongue=smoothstep(.5,.02,abs(p.x-ar*.5-n1*.22))*smoothstep(1.2,.1,abs(uv.y-.62));',
+  'vec2 c2=vec2(ar*.08,.12);float mass2=smoothstep(.75,0.,length(p-c2)+fbm(st*1.1-t)*.25);',
+  'vec3 deep=vec3(.02,.05,.18);vec3 blue=vec3(.07,.2,.72);vec3 hot=vec3(.3,.55,1.);vec3 ember=vec3(1.,.42,.2);',
+  'col=mix(col,deep,clamp(mass*.9,0.,1.));col=mix(col,blue,clamp(mass*mass*1.05,0.,1.));col+=hot*tongue*mass*.7;',
+  'col+=ember*mass2*.16;',
+  'col*=.93+.07*sin(u_time*.4);float vig=smoothstep(1.5,.3,length(uv-vec2(.5,.62)));col*=mix(.5,1.,vig);',
+  'gl_FragColor=vec4(col,1.);}'].join('\n');
+  function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);return o;}
+  var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);
+  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) return;
+  gl.useProgram(pr);
+  var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+  var loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+  var uT=gl.getUniformLocation(pr,'u_time'),uR=gl.getUniformLocation(pr,'u_res'),uM=gl.getUniformLocation(pr,'u_m');
+  var dpr=Math.min(window.devicePixelRatio||1,1.25), m={x:.5,y:.5}, tg={x:.5,y:.5}, t0=performance.now(), run=true;
+  function size(){c.width=Math.round(innerWidth*dpr);c.height=Math.round(innerHeight*dpr);gl.viewport(0,0,c.width,c.height);gl.uniform2f(uR,c.width,c.height);}
+  addEventListener('resize',function(){size();if(reduce)draw(8);});
+  addEventListener('pointermove',function(e){tg.x=e.clientX/innerWidth;tg.y=1-e.clientY/innerHeight;});
+  document.addEventListener('visibilitychange',function(){run=!document.hidden;if(run&&!reduce)requestAnimationFrame(loop);});
+  function draw(s){m.x+=(tg.x-m.x)*.03;m.y+=(tg.y-m.y)*.03;gl.uniform1f(uT,s);gl.uniform2f(uM,m.x,m.y);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);}
+  function loop(){if(!run)return;draw((performance.now()-t0)/1000);requestAnimationFrame(loop);}
+  size(); if(reduce) draw(8); else requestAnimationFrame(loop);
+})();
+/* ?t=slug : surligne l'outil demandé (lien venu d'un Reel précis) */
+(function(){var s=new URLSearchParams(location.search).get('t');if(!s)return;
+  var el=document.getElementById('t-'+s.toLowerCase().replace(/[^a-z0-9-]/g,''));
+  if(el&&el.classList.contains('row')){el.classList.add('hit');setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'center'});},700);}})();
+</script>
+</body>
+</html>
