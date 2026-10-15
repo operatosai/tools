@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Operatos AI — One AI tool a day</title>
-<meta name="description" content="One AI tool a day, tested for real. Free tools, honest limits, no hype. Today: EasyCut.">
+<meta name="description" content="One AI tool a day, tested for real. Free tools, honest limits, no hype. Today: Viggle Turbo v0.3.">
 <meta name="theme-color" content="#03061a">
-<meta property="og:title" content="Operatos AI — EasyCut">
+<meta property="og:title" content="Operatos AI — Viggle Turbo v0.3">
 <meta property="og:description" content="One AI tool a day, tested for real. Free tools, honest limits, no hype.">
 <meta property="og:image" content="https://operatosai.github.io/tools/og.jpg">
 <meta property="og:url" content="https://operatosai.github.io/tools/">
@@ -33,11 +33,11 @@ main{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:max(28px,
 .orb img{width:100%;height:100%;border-radius:50%;display:block;position:relative;z-index:1}
 .orb::before{content:"";position:absolute;inset:-26px;border-radius:50%;z-index:0;
   background:radial-gradient(circle,rgba(47,107,255,.55),rgba(47,107,255,0) 65%);filter:blur(6px)}
-.handle{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue2);font-weight:600}
+.handle{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#b9ccff;font-weight:600;text-shadow:0 1px 12px rgba(3,6,26,.8)}
 h1{font-size:clamp(34px,9vw,46px);line-height:1.02;letter-spacing:-.035em;font-weight:750;margin:10px 0 10px}
 h1 em{font-style:normal;background:linear-gradient(100deg,#fff 10%,#9fbaff 55%,var(--orange) 105%);
   -webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{color:var(--mute);font-size:15.5px;max-width:30ch}
+.sub{color:#c0cbea;font-size:15.5px;max-width:30ch;text-shadow:0 1px 14px rgba(3,6,26,.85)}
 
 /* featured */
 .label{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:8px 2px 12px}
@@ -108,13 +108,13 @@ footer a.small{color:var(--mute)}
   </header>
 
   <section class="in d3" aria-labelledby="today">
-    <div class="label"><span class="live" aria-hidden="true"></span><span id="today">Latest tool · Oct 13</span></div>
-    <article class="card" id="t-easycut"><div class="meta"><span class="chip free">Free</span><span class="chip">Free Browser Video Editor with AI Tools</span></div><h2>EasyCut</h2><p class="what">EasyCut: a free, browser‑based video editor with AI tools, no account needed.</p><a class="cta" href="https://easycut.studio/" rel="noopener">Open EasyCut<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><div class="alt"><a href="https://www.instagram.com/reel/DedU60-jXAp/">Watch the Reel</a></div><span class="site">Official site: easycut.studio</span></article>
+    <div class="label"><span class="live" aria-hidden="true"></span><span id="today">Latest tool · Oct 15</span></div>
+    <article class="card" id="t-viggle-turbo-v0-3"><div class="meta"><span class="chip ">Check pricing</span></div><h2>Viggle Turbo v0.3</h2><p class="what">Viggle Turbo v0.3 is a distilled Qwen-Image-2.1 model that generates and edits images in 6 steps, about 5× faster than the 40-step base model.</p><a class="cta" href="https://huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo" rel="noopener">Open Viggle Turbo v0.3<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><div class="alt"><a href="https://www.instagram.com/reel/DehVzMgAmzw/">Watch the Reel</a></div><span class="site">Official site: huggingface.co/spaces/Viggle/Qwen-Image-2.1-viggle-turbo</span></article>
   </section>
 
   <section class="list in d4" aria-labelledby="prev">
     <div class="label"><span id="prev">Previous tools</span></div>
-    <p class="empty">New tools land here every day. Follow so you don't miss one.</p>
+    <a class="row" id="t-easycut" href="https://easycut.studio/" rel="noopener"><span class="ini">E</span><span class="txt"><b>EasyCut <small style="color:var(--mute);font-weight:500">· Oct 13</small></b><span>A free, browser‑based video editor with AI tools, no account needed.</span></span><span class="go" aria-hidden="true">↗</span></a>
   </section>
 
   <footer>
@@ -149,11 +149,11 @@ footer a.small{color:var(--mute)}
   'void main(){vec2 uv=gl_FragCoord.xy/u_res;float ar=u_res.x/u_res.y;vec2 p=uv;p.x*=ar;',
   'float t=u_time*.05;vec2 drift=(u_m-.5)*.12;vec2 st=p*.85+drift;st+=vec2(fbm(st+t),fbm(st-t))*.35;',
   'vec3 col=vec3(.004,.008,.03);',
-  'vec2 c1=vec2(ar*.5,.92)+drift;float n1=fbm(st*1.4+t*2.);float mass=smoothstep(1.15,.05,length(p-c1)+n1*.32);',
+  'vec2 c1=vec2(ar*.5,1.08)+drift;float n1=fbm(st*1.4+t*2.);float mass=smoothstep(1.15,.05,length(p-c1)+n1*.32);',
   'float tongue=smoothstep(.5,.02,abs(p.x-ar*.5-n1*.22))*smoothstep(1.2,.1,abs(uv.y-.62));',
   'vec2 c2=vec2(ar*.08,.12);float mass2=smoothstep(.75,0.,length(p-c2)+fbm(st*1.1-t)*.25);',
-  'vec3 deep=vec3(.02,.05,.18);vec3 blue=vec3(.07,.2,.72);vec3 hot=vec3(.3,.55,1.);vec3 ember=vec3(1.,.42,.2);',
-  'col=mix(col,deep,clamp(mass*.9,0.,1.));col=mix(col,blue,clamp(mass*mass*1.05,0.,1.));col+=hot*tongue*mass*.7;',
+  'vec3 deep=vec3(.015,.035,.13);vec3 blue=vec3(.045,.12,.46);vec3 hot=vec3(.22,.42,.95);vec3 ember=vec3(1.,.42,.2);',
+  'col=mix(col,deep,clamp(mass*.85,0.,1.));col=mix(col,blue,clamp(mass*mass*.8,0.,1.));col+=hot*tongue*mass*.38;',
   'col+=ember*mass2*.16;',
   'col*=.93+.07*sin(u_time*.4);float vig=smoothstep(1.5,.3,length(uv-vec2(.5,.62)));col*=mix(.5,1.,vig);',
   'gl_FragColor=vec4(col,1.);}'].join('\n');
